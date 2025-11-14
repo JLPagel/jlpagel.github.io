@@ -488,7 +488,19 @@
     <nav>
         <div class="nav-container">
             <div class="logo">JLP.DEV</div>
-            <a href="javascript:history.go(-2)" class="back-btn">← Back</a>
+            <a href="#" class="back-btn" onclick="goBack(); return false;">← Back</a>
+			<script>
+			function goBack() {
+    // If there’s a previous page in history, go back
+   			 	if (document.referrer) {
+        			window.location.href = document.referrer;
+   			 	} else {
+        // Fallback if there’s no referrer
+			        window.location.href = '/'; // change '/' to your home page or another safe page
+    			}
+			}
+			</script>
+
 
                 ← Back to Home
             </a>
@@ -921,6 +933,7 @@ for (let i = 0; i < 5; i++) {
 </body>
 
 </html>
+
 
 
 
