@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - JLP Development</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .ultra-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: #000;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #ec4899, transparent);
+            top: -200px;
+            left: -200px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #f472b6, transparent);
+            top: 20%;
+            right: -150px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #db2777, transparent);
+            bottom: -200px;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -80px) scale(1.1); }
+            50% { transform: translate(-30px, 60px) scale(0.9); }
+            75% { transform: translate(70px, 40px) scale(1.05); }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(17, 17, 17, 0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 40px;
+            z-index: 1000;
+            border-radius: 100px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .back-btn {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: #ec4899;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 140px 40px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .portfolio-hero {
+            text-align: center;
+            margin-bottom: 100px;
+            padding: 60px 0;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 96px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            letter-spacing: -5px;
+            background: linear-gradient(135deg, #fff 0%, #ec4899 40%, #f472b6 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-hero p {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 120px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.3);
+            box-shadow: 0 30px 80px rgba(236, 72, 153, 0.4);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 32px;
+        }
+
+        .project-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ec4899;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: #f472b6;
+            gap: 12px;
+        }
+
+        /* GitHub Section */
+        .github-card {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .github-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ec4899, #f472b6, transparent);
+        }
+
+        .github-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .github-card h3 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .github-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.4);
+        }
+
+        .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(236, 72, 153, 0.6);
+        }
+
+        /* Interactive Section */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .interactive-card {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.3);
+            box-shadow: 0 30px 80px rgba(236, 72, 153, 0.4);
+        }
+
+        .interactive-card h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .interactive-card p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .demo-area {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            min-height: 200px;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: rgba(236, 72, 153, 0.2);
+            border: 1px solid rgba(236, 72, 153, 0.4);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background: rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .game-info {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-top: 16px;
+        }
+
+        .turtle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .turtle-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 60px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-hero h1 {
+                font-size: 56px;
+                letter-spacing: -3px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .projects-grid,
+            .interactive-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 14px 24px;
+            }
+
+            .container {
+                padding: 120px 24px 40px;
+            }
+
+            .github-card,
+            .interactive-card {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ultra-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">JLP.DEV</div>
+            <a href="index.html" class="back-btn">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="portfolio-hero">
+            <h1>My Portfolio</h1>
+            <p>Explore my web development projects, code repositories, and interactive demos</p>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Websites and applications I've designed and developed</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&h=600&fit=crop&q=80" alt="Transform Your Vision Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Transform Your Vision</h3>
+                        <p class="project-description">A vibrant Christian community website featuring animated gradients, scroll-based effects, and interactive prayer request forms. Complete with mobile navigation and smooth animations.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Animations</span>
+                            <span class="tag">Forms</span>
+                        </div>
+                        <a href="https://jlpagel.github.io/TransforYourVision_Webpage/" target="_blank">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Coming Soon!</h3>
+                        <p class="project-description">A multi-page business website with contact forms and interactive features. Fully mobile-responsive- Like the one you'e on RIGHT NOW!</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">API Integration</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🛍️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Coming Soon!</h3>
+                        <p class="project-description">An e-commerce site with shopping cart functionality and payment integration. Clean, modern design.</p>
+                        <div class="project-tags">
+                            <span class="tag">E-Commerce</span>
+                            <span class="tag">Payment Gateway</span>
+                            <span class="tag">Database</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub & YouTube Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Connect With Me</h2>
+                <p class="section-subtitle">Follow my coding journey and learn with me</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <!-- GitHub Card -->
+                <div class="github-card">
+                    <div class="github-icon">💻</div>
+                    <h3>Visit My GitHub</h3>
+                    <p>Explore my repositories, see my coding style, and check out various projects I'm working on. From web apps to Python scripts and more!</p>
+                    <a href="https://github.com/JLPagel" target="_blank" class="github-btn">
+                        View GitHub Profile →
+                    </a>
+                </div>
+
+                <!-- YouTube Card -->
+                <div class="github-card" style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(255, 0, 0, 0.02));">
+                    <div class="github-icon">🎥</div>
+                    <h3>YouTube Tutorials</h3>
+                    <p>Check me out on YouTube for beginner coding tutorials covering Python, JavaScript, HTML, CSS, and more!</p>
+                    <p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; font-style: italic; margin-top: 16px; margin-bottom: 20px;">
+                        🚧 Work in Progress - Channel coming soon with regular updates!
+                    </p>
+                    <a href="https://youtube.com/@YourChannelName" target="_blank" class="github-btn" style="background: linear-gradient(135deg, #FF0000, #CC0000);">
+                        Subscribe on YouTube →
+                    </a>
+                </div>
+            </div>
+
+            <!-- LinkedIn Hire Me Card -->
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div style="background: rgba(17, 17, 17, 0.6); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 32px 40px; text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #0A66C2, transparent);"></div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px; text-align: left;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span style="font-size: 28px;">💼</span>
+                                <h4 style="font-size: 20px; font-weight: 700; color: #fff; margin: 0;">Looking to Hire?</h4>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6; margin: 0;">
+                                View my professional experience, education, and work history on LinkedIn
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://linkedin.com/in/jenniferpagelmidwest" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #0A66C2, #004182); color: white; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 20px rgba(10, 102, 194, 0.3); white-space: nowrap;">
+                                <span>View LinkedIn</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Demos Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Interactive Demos</h2>
+                <p class="section-subtitle">Just for fun - Python-inspired games and graphics</p>
+            </div>
+
+            <div class="interactive-grid">
+                <!-- Snake Game -->
+                <div class="interactive-card">
+                    <h3>🐍 Snake Game</h3>
+                    <p>A classic Snake game inspired by Python. Use arrow keys to control the snake and eat the food!</p>
+                    <div class="demo-area">
+                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                        <div class="game-info">
+                            Score: <span id="score">0</span> | High Score: <span id="highScore">0</span>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn" onclick="startGame()">Start Game</button>
+                            <button class="control-btn" onclick="pauseGame()">Pause</button>
+                            <button class="control-btn" onclick="resetGame()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turtle Graphics -->
+                <div class="interactive-card">
+                    <h3>🎨 Turtle Graphics</h3>
+                    <p>Beautiful geometric patterns inspired by Python's Turtle Graphics. Watch the code execute and see the pattern unfold in real-time!</p>
+		    <p>Want to learn more? It's easy! Follow me on YouTube</p>
+                    <div class="demo-area">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; min-height: 350px;" class="turtle-grid">
+                            <div style="background: rgba(0, 0, 0, 0.6); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Code View</div>
+                                <pre id="codeDisplay" style="font-family: 'Courier New', monospace; font-size: 11px; color: #10b981; line-height: 1.6; margin: 0; overflow-x: auto; white-space: pre-wrap; max-height: 280px; overflow-y: auto;">// Click a pattern button to see the code</pre>
+                            </div>
+                            <div style="background: rgba(0, 0, 0, 0.6); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Pattern View</div>
+                                <canvas id="turtleCanvas" width="280" height="280" style="border-radius: 8px; background: #000; display: block;"></canvas>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn" onclick="playSpiral()">▶ Spiral</button>
+                            <button class="control-btn" onclick="playFlower()">▶ Flower</button>
+                            <button class="control-btn" onclick="playStar()">▶ Star</button>
+                            <button class="control-btn" onclick="clearTurtle()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with passion and code • Jennifer Pagel © 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        // Snake Game Logic
+        let canvas = document.getElementById('snakeCanvas');
+        let ctx = canvas.getContext('2d');
+        let gridSize = 20;
+        let snake = [{x: 10, y: 10}];
+        let direction = {x: 0, y: 0};
+        let food = {x: 15, y: 15};
+        let score = 0;
+        let highScore = 0;
+        let gameInterval = null;
+        let isPaused = false;
+
+        document.addEventListener('keydown', changeDirection);
+
+        function changeDirection(e) {
+            const keyMap = {
+                'ArrowUp': {x: 0, y: -1},
+                'ArrowDown': {x: 0, y: 1},
+                'ArrowLeft': {x: -1, y: 0},
+                'ArrowRight': {x: 1, y: 0}
+            };
+            
+            const newDir = keyMap[e.key];
+            if (newDir && (direction.x + newDir.x !== 0 || direction.y + newDir.y !== 0)) {
+                direction = newDir;
+            }
+        }
+
+        function startGame() {
+            if (!gameInterval) {
+                direction = {x: 1, y: 0};
+                gameInterval = setInterval(updateGame, 150);
+            }
+            isPaused = false;
+        }
+
+        function pauseGame() {
+            isPaused = !isPaused;
+        }
+
+        function resetGame() {
+            clearInterval(gameInterval);
+            gameInterval = null;
+            snake = [{x: 10, y: 10}];
+            direction = {x: 0, y: 0};
+            score = 0;
+            document.getElementById('score').textContent = score;
+            drawGame();
+        }
+
+        function updateGame() {
+            if (isPaused) return;
+
+            const head = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+
+            if (head.x < 0 || head.x >= 20 || head.y < 0 || head.y >= 20 || 
+                snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                resetGame();
+                return;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById('score').textContent = score;
+                if (score > highScore) {
+                    highScore = score;
+                    document.getElementById('highScore').textContent = highScore;
+                }
+                food = {
+                    x: Math.floor(Math.random() * 20),
+                    y: Math.floor(Math.random() * 20)
+                };
+            } else {
+                snake.pop();
+            }
+
+            drawGame();
+        }
+
+        function drawGame() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#10b981';
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+            });
+
+            ctx.fillStyle = '#ec4899';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+        }
+
+        drawGame();
+
+        // Turtle Graphics Logic
+        let turtleCanvas = document.getElementById('turtleCanvas');
+        let turtleCtx = turtleCanvas.getContext('2d');
+        let isAnimating = false;
+
+        class Turtle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = turtleCanvas.width / 2;
+                this.y = turtleCanvas.height / 2;
+                this.angle = 0;
+            }
+
+            forward(distance) {
+                const newX = this.x + distance * Math.cos(this.angle * Math.PI / 180);
+                const newY = this.y + distance * Math.sin(this.angle * Math.PI / 180);
+                
+                turtleCtx.beginPath();
+                turtleCtx.moveTo(this.x, this.y);
+                turtleCtx.lineTo(newX, newY);
+                turtleCtx.stroke();
+                
+                this.x = newX;
+                this.y = newY;
+            }
+
+            right(angle) {
+                this.angle += angle;
+            }
+        }
+
+        function updateCodeDisplay(code, patternName) {
+            const codeDisplay = document.getElementById('codeDisplay');
+            codeDisplay.textContent = `// ${patternName} Pattern\n\n${code}`;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function playSpiral() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.setColor('#ec4899');
+turtle.penWidth = 2;
+
+for (let i = 0; i < 80; i++) {
+  turtle.forward(i * 1.2);
+  turtle.right(45);
+}`;
+            
+            updateCodeDisplay(code, 'Spiral');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.strokeStyle = '#ec4899';
+            turtleCtx.lineWidth = 2;
+
+            for (let i = 0; i < 80; i++) {
+                turtle.forward(i * 1.2);
+                turtle.right(45);
+                await sleep(25);
+            }
+            
+            isAnimating = false;
+        }
+
+        async function playFlower() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.penWidth = 2;
+
+for (let i = 0; i < 36; i++) {
+  turtle.setColor(\`hsl(\${i * 10}, 70%, 60%)\`);
+  
+  // Draw a square petal
+  for (let j = 0; j < 4; j++) {
+    turtle.forward(60);
+    turtle.right(90);
+  }
+  turtle.right(10);
+}`;
+            
+            updateCodeDisplay(code, 'Flower');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.lineWidth = 2;
+
+            for (let i = 0; i < 36; i++) {
+                turtleCtx.strokeStyle = `hsl(${i * 10}, 70%, 60%)`;
+                
+                for (let j = 0; j < 4; j++) {
+                    turtle.forward(60);
+                    turtle.right(90);
+                    await sleep(10);
+                }
+                turtle.right(10);
+            }
+            
+            isAnimating = false;
+        }
+
+        async function playStar() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.setColor('#f472b6');
+turtle.penWidth = 3;
+
+// Draw a 5-pointed star
+for (let i = 0; i < 5; i++) {
+  turtle.forward(100);
+  turtle.right(144);
+}`;
+            
+            updateCodeDisplay(code, 'Star');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.strokeStyle = '#f472b6';
+            turtleCtx.lineWidth = 3;
+
+            for (let i = 0; i < 5; i++) {
+                turtle.forward(100);
+                turtle.right(144);
+                await sleep(300);
+            }
+            
+            isAnimating = false;
+        }
+
+        function clearTurtle() {
+            turtleCtx.fillStyle = '#000';
+            turtleCtx.fillRect(0, 0, turtleCanvas.width, turtleCanvas.height);
+            if (!isAnimating) {
+                document.getElementById('codeDisplay').textContent = '// Click a pattern button to see the code';
+            }
+        }
+
+        // Initialize
+        clearTurtle();
+    </script>
+</body>
+</html>
