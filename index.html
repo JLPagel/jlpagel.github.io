@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JLP Development - Luxury Web Solutions</title>
+    <title>Portfolio - JLP Development</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -18,10 +18,9 @@
             background: #000;
             color: #fff;
             overflow-x: hidden;
-            padding-top: 0;
         }
 
-        /* Ultra Premium Animated Background */
+        /* Background Effects */
         .ultra-bg {
             position: fixed;
             top: 0;
@@ -43,16 +42,15 @@
         .orb-1 {
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, #7c3aed, transparent);
+            background: radial-gradient(circle, #ec4899, transparent);
             top: -200px;
             left: -200px;
-            animation-delay: 0s;
         }
 
         .orb-2 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, #ec4899, transparent);
+            background: radial-gradient(circle, #f472b6, transparent);
             top: 20%;
             right: -150px;
             animation-delay: 5s;
@@ -61,19 +59,10 @@
         .orb-3 {
             width: 550px;
             height: 550px;
-            background: radial-gradient(circle, #3b82f6, transparent);
+            background: radial-gradient(circle, #db2777, transparent);
             bottom: -200px;
             left: 30%;
             animation-delay: 10s;
-        }
-
-        .orb-4 {
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, #a855f7, transparent);
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 15s;
         }
 
         @keyframes float {
@@ -97,24 +86,7 @@
             pointer-events: none;
         }
 
-        .spotlight {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle 800px at var(--x, 50%) var(--y, 50%), rgba(168, 85, 247, 0.15), transparent 40%);
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        body:hover .spotlight {
-            opacity: 1;
-        }
-
-        /* Premium Navigation */
+        /* Navigation */
         nav {
             position: fixed;
             top: 30px;
@@ -126,9 +98,7 @@
             padding: 16px 40px;
             z-index: 1000;
             border-radius: 100px;
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -137,242 +107,29 @@
             gap: 60px;
         }
 
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 32px;
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
-        .nav-link {
+        .back-btn {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
             transition: color 0.3s;
             letter-spacing: 0.5px;
-            cursor: pointer;
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .nav-link:hover {
-            color: #a855f7;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .services-dropdown {
-            display: none;
-            position: absolute;
-            top: 45px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 12px;
-            min-width: 240px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1001;
-        }
-
-        .services-dropdown.show {
-            display: block;
-        }
-
-        .services-dropdown a {
-            display: block;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s;
-            letter-spacing: 0.3px;
-        }
-
-        .services-dropdown a:hover {
-            background: rgba(168, 85, 247, 0.15);
-            color: #a855f7;
-            transform: translateX(4px);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            z-index: 999;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            width: 90%;
-            max-width: 300px;
-        }
-
-        .mobile-menu.show {
-            display: block;
-            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .mobile-menu a {
-            display: block;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            padding: 12px 16px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
-        }
-
-        .mobile-menu-section {
-            margin-bottom: 16px;
-        }
-
-        .mobile-menu-title {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            margin-bottom: 4px;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-        }
-
-        .contact-dropdown {
-            position: relative;
-        }
-
-        .contact-btn {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 
-                0 0 40px rgba(124, 58, 237, 0.5),
-                0 10px 30px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .contact-btn:hover::before {
-            left: 100%;
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 60px rgba(124, 58, 237, 0.7),
-                0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 60px;
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 340px;
-            border-radius: 20px;
-            box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.9),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            padding: 28px;
-            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .dropdown-content.show {
-            display: block;
-        }
-
-        .dropdown-content h3 {
-            color: #fff;
-            margin-bottom: 14px;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .dropdown-content p {
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-            margin-bottom: 14px;
-            font-size: 14px;
-        }
-
-        .email-link {
-            color: #a855f7;
-            text-decoration: none;
-            font-weight: 600;
-            word-break: break-all;
-            transition: color 0.3s;
-        }
-
-        .email-link:hover {
+        .back-btn:hover {
             color: #ec4899;
         }
 
@@ -384,780 +141,339 @@
             z-index: 2;
         }
 
-        /* Ultra Hero Section */
-        header {
+        /* Hero Section */
+        .portfolio-hero {
             text-align: center;
-            margin-bottom: 120px;
-            position: relative;
-            padding: 80px 0;
+            margin-bottom: 100px;
+            padding: 60px 0;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 10px #10b981;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-
-        h1 {
-            font-size: 120px;
+        .portfolio-hero h1 {
+            font-size: 96px;
             font-weight: 900;
-            margin-bottom: 32px;
-            letter-spacing: -6px;
-            line-height: 0.95;
-            background: linear-gradient(135deg, #fff 0%, #a855f7 40%, #ec4899 80%, #fff 100%);
+            margin-bottom: 24px;
+            letter-spacing: -5px;
+            background: linear-gradient(135deg, #fff 0%, #ec4899 40%, #f472b6 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 10s ease infinite;
-            background-size: 300% 300%;
-            text-shadow: 0 0 80px rgba(168, 85, 247, 0.5);
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .subtitle {
-            font-size: 28px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 50px;
-            font-weight: 300;
-            letter-spacing: -0.5px;
+        .portfolio-hero p {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.6);
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
+            margin: 0 auto;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            border: none;
-            padding: 20px 48px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 
-                0 0 60px rgba(124, 58, 237, 0.6),
-                0 20px 50px rgba(0, 0, 0, 0.4);
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
+        /* Section Headers */
+        .section {
+            margin-bottom: 120px;
         }
 
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .hero-cta:hover::before {
-            left: 100%;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 
-                0 0 80px rgba(124, 58, 237, 0.8),
-                0 25px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin: 100px 0;
-            padding: 80px 60px;
-            background: rgba(17, 17, 17, 0.4);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
-        }
-
-        .stat {
+        .section-header {
             text-align: center;
+            margin-bottom: 60px;
         }
 
-        .stat-number {
+        .section-title {
             font-size: 56px;
             font-weight: 900;
-            background: linear-gradient(135deg, #fff, #a855f7);
+            letter-spacing: -3px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-            margin-bottom: 8px;
         }
 
-        .stat-label {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Portfolio Note */
-        .portfolio-note {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            border-radius: 32px;
-            padding: 60px;
-            margin: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-note::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent);
-        }
-
-        .portfolio-note h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .portfolio-note p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 2;
+        .section-subtitle {
             font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Payment Info Box */
-        .payment-info {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 20px;
-            padding: 32px;
-            margin: 40px 0 60px 0;
-            position: relative;
-            overflow: hidden;
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
         }
 
-        .payment-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #10b981, transparent);
-        }
-
-        .payment-info h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            font-weight: 700;
-            color: #10b981;
-        }
-
-        .payment-info p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .payment-methods {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .payment-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .payment-badge::before {
-            content: "✓";
-            color: #10b981;
-            font-weight: 700;
-        }
-
-        /* About Me Section */
-        .about-section {
+        .project-card {
             background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 60px;
-            margin: 80px 0;
-            position: relative;
+            border-radius: 24px;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent);
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.3);
+            box-shadow: 0 30px 80px rgba(236, 72, 153, 0.4);
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
-            background: rgba(168, 85, 247, 0.1);
-            border: 3px solid rgba(168, 85, 247, 0.3);
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
-            position: relative;
+            font-size: 64px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
 
-        .profile-photo img {
+        .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 17px;
         }
 
-        .profile-placeholder {
-            color: rgba(255, 255, 255, 0.3);
+        .project-content {
+            padding: 32px;
         }
 
-        .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
+        .project-title {
+            font-size: 28px;
             font-weight: 800;
+            margin-bottom: 12px;
             letter-spacing: -1px;
         }
 
-        .about-text p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 16px;
-            margin-bottom: 16px;
+        .project-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 15px;
         }
 
-        .portfolio-link {
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
+            color: #ec4899;
             text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 15px;
             font-weight: 600;
-            margin-top: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+            font-size: 15px;
+            transition: all 0.3s;
         }
 
-        .portfolio-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.6);
+        .project-link:hover {
+            color: #f472b6;
+            gap: 12px;
         }
 
-        /* Premium Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-        }
-
-        .service-card {
+        /* GitHub Section */
+        .github-card {
             background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
-            padding: 50px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 60px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
+        .github-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
+            background: linear-gradient(90deg, transparent, #ec4899, #f472b6, transparent);
         }
 
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.1), transparent 70%);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            border-radius: 50%;
-            pointer-events: none;
+        .github-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
         }
 
-        .service-card:hover {
-            transform: translateY(-12px);
-            border-color: rgba(168, 85, 247, 0.3);
-            box-shadow: 
-                0 30px 80px rgba(124, 58, 237, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card:hover::after {
-            width: 600px;
-            height: 600px;
-        }
-
-        .discount-badge {
-            position: absolute;
-            top: 28px;
-            right: 28px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.5);
-            text-transform: uppercase;
-        }
-
-        .service-title {
+        .github-card h3 {
             font-size: 36px;
-            color: #fff;
-            margin-bottom: 20px;
             font-weight: 800;
-            letter-spacing: -1.5px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
         }
 
-        .service-description {
+        .github-card p {
             color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
+            font-size: 18px;
             margin-bottom: 32px;
-            font-size: 16px;
-            position: relative;
-            z-index: 1;
+            line-height: 1.7;
         }
 
-        .features {
-            list-style: none;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .features li {
-            padding: 12px 0;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 15px;
-            display: flex;
+        .github-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 14px;
-        }
-
-        .features li::before {
-            content: "✦";
-            color: #a855f7;
+            gap: 12px;
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 50px;
             font-size: 16px;
-        }
-
-        .pricing {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin: 40px 0;
-            padding: 32px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            z-index: 1;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .arrow {
-            color: #10b981;
-            font-size: 28px;
-            font-weight: 800;
-        }
-
-        .sale-price {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 16px 32px;
-            border-radius: 16px;
-            font-weight: 900;
-            font-size: 42px;
-            letter-spacing: -2px;
-            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
-        }
-
-        .cta-button {
-            width: 100%;
-            padding: 22px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 17px;
             font-weight: 700;
-            cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.4);
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
+        .github-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.6);
+            box-shadow: 0 12px 40px rgba(236, 72, 153, 0.6);
         }
 
-        /* Contact Form */
-        .contact-section {
+        /* Interactive Section */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .interactive-card {
             background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 40px;
-            padding: 80px;
-            margin: 120px 0;
-            position: relative;
-            overflow: hidden;
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s;
         }
 
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent);
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.3);
+            box-shadow: 0 30px 80px rgba(236, 72, 153, 0.4);
         }
 
-        .contact-section h2 {
-            color: #fff;
-            font-size: 64px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 900;
-            letter-spacing: -3px;
+        .interactive-card h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .contact-section > p {
+        .interactive-card p {
             color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
-        .form-group {
-            margin-bottom: 28px;
-        }
-
-        .form-group label {
-            display: block;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 700;
-            margin-bottom: 14px;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 20px 24px;
+        .demo-area {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            font-size: 16px;
-            color: #fff;
+            padding: 24px;
+            margin: 24px 0;
+            min-height: 200px;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: rgba(236, 72, 153, 0.2);
+            border: 1px solid rgba(236, 72, 153, 0.4);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s;
-            font-family: inherit;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #a855f7;
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+        .control-btn:hover {
+            background: rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 160px;
+        .game-info {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-top: 16px;
         }
 
-        .form-row {
+        .turtle-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 28px;
+            gap: 16px;
         }
 
-        .submit-button {
-            width: 100%;
-            padding: 24px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.5);
-            margin-top: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .submit-button:hover::before {
-            left: 100%;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 50px rgba(124, 58, 237, 0.7);
-        }
-
-        .thank-you-message {
-            display: none;
-            text-align: center;
-            padding: 80px 40px;
-        }
-
-        .thank-you-message h3 {
-            font-size: 56px;
-            margin-bottom: 24px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #fff, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .thank-you-message p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
-            line-height: 1.8;
+        @media (max-width: 1024px) {
+            .turtle-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         footer {
             text-align: center;
             color: rgba(255, 255, 255, 0.4);
-            margin-top: 100px;
             padding: 60px;
             font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 80px;
-                letter-spacing: -4px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
         }
 
         @media (max-width: 768px) {
+            .portfolio-hero h1 {
+                font-size: 56px;
+                letter-spacing: -3px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .projects-grid,
+            .interactive-grid {
+                grid-template-columns: 1fr;
+            }
+
             nav {
-                top: 20px;
                 padding: 14px 24px;
-            }
-
-            .nav-container {
-                gap: 30px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
             }
 
             .container {
                 padding: 120px 24px 40px;
             }
 
-            h1 {
-                font-size: 56px;
-                letter-spacing: -3px;
+            .github-card,
+            .interactive-card {
+                padding: 40px 24px;
             }
-
-            .subtitle {
-                font-size: 20px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card {
-                padding: 40px 32px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-section {
-                padding: 50px 32px;
-            }
-
-            .contact-section h2 {
-                font-size: 42px;
-            }
-
-            .dropdown-content {
-                right: -20px;
-                min-width: 300px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .profile-photo {
-                margin: 0 auto;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -1166,431 +482,440 @@
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
-        <div class="orb orb-4"></div>
     </div>
     <div class="grid-overlay"></div>
-    <div class="spotlight"></div>
 
     <nav>
         <div class="nav-container">
             <div class="logo">JLP.DEV</div>
-            <div class="nav-menu">
-                <div class="nav-item">
-                    <span class="nav-link" onclick="toggleServicesDropdown()">Services ▾</span>
-                    <div class="services-dropdown" id="servicesDropdown">
-                        <a href="#service-1" onclick="smoothScroll(event, 'service-1'); toggleServicesDropdown()">Landing Page</a>
-                        <a href="#service-2" onclick="smoothScroll(event, 'service-2'); toggleServicesDropdown()">Multi-Page Website</a>
-                        <a href="#service-3" onclick="smoothScroll(event, 'service-3'); toggleServicesDropdown()">Web Application</a>
-                        <a href="#service-4" onclick="smoothScroll(event, 'service-4'); toggleServicesDropdown()">Website Fixes & Updates</a>
-                        <a href="#service-5" onclick="smoothScroll(event, 'service-5'); toggleServicesDropdown()">E-Commerce Store</a>
-                        <a href="#service-6" onclick="smoothScroll(event, 'service-6'); toggleServicesDropdown()">Website Consultation</a>
-                    </div>
-                </div>
-                <a href="#about" class="nav-link" onclick="smoothScroll(event, 'about')">About</a>
-                <a href="#pricing" class="nav-link" onclick="smoothScroll(event, 'pricing')">Pricing</a>
-                <a href="#contactForm" class="nav-link" onclick="smoothScroll(event, 'contactForm')">Contact</a>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-            <div class="contact-dropdown">
-                <button class="contact-btn" onclick="toggleDropdown()">Let's Talk</button>
-                <div class="dropdown-content" id="dropdownMenu">
-                    <h3>📧 Consultation Options</h3>
-                    <p><strong>15 minutes FREE</strong> - Quick project discussion</p>
-                    <p><strong>Full Hour ($20)</strong> - In-depth consultation (payment due upfront)</p>
-                    <p style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);">Email me directly:</p>
-                    <a href="mailto:Jlpagel.midwest@gmail.com" class="email-link">Jlpagel.midwest@gmail.com</a>
-                    <p style="margin-top: 12px; font-size: 13px;">Or fill out the contact form below and I'll get back to you within 24 hours!</p>
-                </div>
-            </div>
+            <a href="index.html" class="back-btn">
+                ← Back to Home
+            </a>
         </div>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-section">
-            <div class="mobile-menu-title">Services</div>
-            <a href="#service-1" onclick="smoothScroll(event, 'service-1'); toggleMobileMenu()">Landing Page</a>
-            <a href="#service-2" onclick="smoothScroll(event, 'service-2'); toggleMobileMenu()">Multi-Page Website</a>
-            <a href="#service-3" onclick="smoothScroll(event, 'service-3'); toggleMobileMenu()">Web Application</a>
-            <a href="#service-4" onclick="smoothScroll(event, 'service-4'); toggleMobileMenu()">Website Fixes</a>
-            <a href="#service-5" onclick="smoothScroll(event, 'service-5'); toggleMobileMenu()">E-Commerce Store</a>
-            <a href="#service-6" onclick="smoothScroll(event, 'service-6'); toggleMobileMenu()">Consultation</a>
-        </div>
-        <a href="#about" onclick="smoothScroll(event, 'about'); toggleMobileMenu()">About</a>
-        <a href="#pricing" onclick="smoothScroll(event, 'pricing'); toggleMobileMenu()">Pricing</a>
-        <a href="#contactForm" onclick="smoothScroll(event, 'contactForm'); toggleMobileMenu()">Contact</a>
-    </div>
-
     <div class="container">
-        <header>
-            <div class="hero-badge">
-                <span class="pulse-dot"></span>
-                Available for Projects
-            </div>
-            <h1>Premium Web<br>Experiences</h1>
-            <p class="subtitle">Crafting exceptional digital products that convert visitors into customers and elevate your brand</p>
-            <button class="hero-cta" onclick="scrollToContact()">
-                Start Your Project
-                <span>→</span>
-            </button>
-        </header>
-
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Client Satisfaction</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">24h</div>
-                <div class="stat-label">Response Time</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">70%</div>
-                <div class="stat-label">Cost Savings</div>
-            </div>
+        <div class="portfolio-hero">
+            <h1>My Portfolio</h1>
+            <p>Explore my web development projects, code repositories, and interactive demos</p>
         </div>
 
-        <div class="portfolio-note">
-            <h3>💲Low Cost Investment Opportunity</h3>
-            <p> These special rates reflect that I'm early in my career while still delivering quality, functional websites. You get premium web development at a fraction of typical costs, and I gain valuable real-world experience. A true win-win partnership!</p>
-        </div>
+        <!-- Projects Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Websites and applications I've designed and developed</p>
+            </div>
 
-        <!-- About Me Section -->
-        <div class="about-section" id="about">
-            <div class="about-content">
-                <div class="profile-photo">
-                    <!-- Replace the src below with your actual photo URL -->
-                     <img src="Ackah Photo.JPG" alt="Jennifer Pagel"> 
-                   <!-- <span class="profile-placeholder">📸</span> -->
-                    <style>
-                        .profile-photo {
-                            display: block;
-                            margin: 0 auto;   /* centers the image */
-                            max-width: 200px; /* optional: control size */
-                            border-radius: 50%; /* optional: circle crop */
-                        }
-                    </style>
-
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&h=600&fit=crop&q=80" alt="Transform Your Vision Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Transform Your Vision</h3>
+                        <p class="project-description">A vibrant Christian community website featuring animated gradients, scroll-based effects, and interactive prayer request forms. Complete with mobile navigation and smooth animations.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Animations</span>
+                            <span class="tag">Forms</span>
+                        </div>
+                        <a href="https://jlpagel.github.io/TransforYourVision_Webpage/" target="_blank">View Project →</a>
+                    </div>
                 </div>
-                <div class="about-text">
-                    <h3>About Me</h3>
-                    <p>Hi! I love solving problems and bringing creative visions to life through code.</p>
-                    <p>I’m a full-stack developer currently two years into my degree program, with practical experience in building and deploying </p>
-                    <p>full websites using front-end and back-end technologies. Over the next year, I’ll be expanding my education into AI development to broaden my technical skillset and integrate modern, intelligent features into future projects.</p>
-                    <a href="portfolio.html" class="portfolio-link">
-                        View My Portfolio
-                        <span>→</span>
+
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Coming Soon!</h3>
+                        <p class="project-description">A multi-page business website with contact forms and interactive features. Fully mobile-responsive- Like the one you'e on RIGHT NOW!</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">API Integration</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🛍️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Coming Soon!</h3>
+                        <p class="project-description">An e-commerce site with shopping cart functionality and payment integration. Clean, modern design.</p>
+                        <div class="project-tags">
+                            <span class="tag">E-Commerce</span>
+                            <span class="tag">Payment Gateway</span>
+                            <span class="tag">Database</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub & YouTube Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Connect With Me</h2>
+                <p class="section-subtitle">Follow my coding journey and learn with me</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <!-- GitHub Card -->
+                <div class="github-card">
+                    <div class="github-icon">💻</div>
+                    <h3>Visit My GitHub</h3>
+                    <p>Explore my repositories, see my coding style, and check out various projects I'm working on. From web apps to Python scripts and more!</p>
+                    <a href="https://github.com/JLPagel" target="_blank" class="github-btn">
+                        View GitHub Profile →
+                    </a>
+                </div>
+
+                <!-- YouTube Card -->
+                <div class="github-card" style="background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(255, 0, 0, 0.02));">
+                    <div class="github-icon">🎥</div>
+                    <h3>YouTube Tutorials</h3>
+                    <p>Check me out on YouTube for beginner coding tutorials covering Python, JavaScript, HTML, CSS, and more!</p>
+                    <p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; font-style: italic; margin-top: 16px; margin-bottom: 20px;">
+                        🚧 Work in Progress - Channel coming soon with regular updates!
+                    </p>
+                    <a href="https://youtube.com/@YourChannelName" target="_blank" class="github-btn" style="background: linear-gradient(135deg, #FF0000, #CC0000);">
+                        Subscribe on YouTube →
                     </a>
                 </div>
             </div>
-        </div>
 
-        <div class="services-grid" id="services">
-            <!-- Service 1 -->
-            <div class="service-card" id="service-1">
-                <div class="discount-badge">70% OFF</div>
-                <h2 class="service-title">Landing Page</h2>
-                <p class="service-description">A professional single-page website perfect for portfolios, personal brands, or simple business presence.</p>
-                <ul class="features">
-                    <li>Responsive design (mobile & desktop)</li>
-                    <li>Contact form integration</li>
-                    <li>Modern, clean design</li>
-                    <li>Fast loading speed</li>
-                    <li>2 rounds of revisions</li>
-                </ul>
-                <div class="pricing" id="pricing">
-                    <span class="original-price">$500</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$150</span>
+            <!-- LinkedIn Hire Me Card -->
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div style="background: rgba(17, 17, 17, 0.6); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 32px 40px; text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #0A66C2, transparent);"></div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px; text-align: left;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <span style="font-size: 28px;">💼</span>
+                                <h4 style="font-size: 20px; font-weight: 700; color: #fff; margin: 0;">Looking to Hire?</h4>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6; margin: 0;">
+                                View my professional experience, education, and work history on LinkedIn
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://linkedin.com/in/jenniferpagelmidwest" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #0A66C2, #004182); color: white; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 20px rgba(10, 102, 194, 0.3); white-space: nowrap;">
+                                <span>View LinkedIn</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
-                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
-                    <p style="color: rgba(255, 255, 255, 0.5); font-size: 13px; text-align: center;">💳 Accepts: Venmo, CashApp, PayPal, Stripe</p>
-                </div>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="service-card" id="service-2">
-                <div class="discount-badge">65% OFF</div>
-                <h2 class="service-title">Multi-Page Website</h2>
-                <p class="service-description">A complete website with up to 5 pages, ideal for small businesses and growing brands.</p>
-                <ul class="features">
-                    <li>Up to 5 custom pages</li>
-                    <li>Responsive design</li>
-                    <li>Navigation menu</li>
-                    <li>Contact form & Google Maps</li>
-                    <li>Basic SEO optimization</li>
-                    <li>3 rounds of revisions</li>
-                </ul>
-                <div class="pricing">
-                    <span class="original-price">$1,200</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$400</span>
-                </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service-card" id="service-3">
-                <div class="discount-badge">60% OFF</div>
-                <h2 class="service-title">Web Application</h2>
-                <p class="service-description">Interactive web app with user authentication, database, and custom functionality.</p>
-                <ul class="features">
-                    <li>User login & authentication</li>
-                    <li>Database integration</li>
-                    <li>Custom features & functionality</li>
-                    <li>Admin dashboard</li>
-                    <li>Responsive design</li>
-                    <li>4 rounds of revisions</li>
-                </ul>
-                <div class="pricing">
-                    <span class="original-price">$2,000</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$800</span>
-                </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="service-card" id="service-4">
-                <div class="discount-badge">75% OFF</div>
-                <h2 class="service-title">Website Fixes & Updates</h2>
-                <p class="service-description">Need help fixing bugs, updating content, or improving an existing website? I can help!</p>
-                <ul class="features">
-                    <li>Bug fixes & troubleshooting</li>
-                    <li>Content updates</li>
-                    <li>Design improvements</li>
-                    <li>Performance optimization</li>
-                    <li>Responsive fixes</li>
-                </ul>
-                <div class="pricing">
-                    <span class="original-price">$80/hr</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$20/hr</span>
-                </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="service-card" id="service-5">
-                <div class="discount-badge">70% OFF</div>
-                <h2 class="service-title">E-Commerce Store</h2>
-                <p class="service-description">A simple online store to start selling your products or services online.</p>
-                <ul class="features">
-                    <li>Product catalog (up to 20 items)</li>
-                    <li>Shopping cart functionality</li>
-                    <li>Payment integration</li>
-                    <li>Responsive design</li>
-                    <li>Admin product management</li>
-                    <li>3 rounds of revisions</li>
-                </ul>
-                <div class="pricing">
-                    <span class="original-price">$1,800</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$550</span>
-                </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="service-card" id="service-6">
-                <div class="discount-badge">80% OFF</div>
-                <h2 class="service-title">Website Consultation</h2>
-                <p class="service-description">Not sure what you need? Let's chat about your project and I'll help you figure out the best solution.</p>
-                <ul class="features">
-                    <li>1-hour video call</li>
-                    <li>Project scope discussion</li>
-                    <li>Technology recommendations</li>
-                    <li>Timeline & cost estimates</li>
-                    <li>Answering your questions</li>
-                </ul>
-                <div class="pricing">
-                    <span class="original-price">$100</span>
-                    <span class="arrow">→</span>
-                    <span class="sale-price">$20</span>
-                </div>
-                <button class="cta-button" onclick="scrollToContact()">Get Started</button>
             </div>
         </div>
 
-        <!-- Contact Form Section -->
-        <div class="contact-section" id="contactForm">
-            <div id="formContainer">
-                <h2>Let's Build Together</h2>
-                <p>Fill out this form and I'll be in touch within 24 hours</p>
-                
-                <form onsubmit="handleSubmit(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="John Doe">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="john@company.com">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Interested In *</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service...</option>
-                                <option value="landing">Landing Page</option>
-                                <option value="multi">Multi-Page Website</option>
-                                <option value="webapp">Web Application</option>
-                                <option value="fixes">Website Fixes & Updates</option>
-                                <option value="ecommerce">E-Commerce Store</option>
-                                <option value="consultation">Website Consultation</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="budget">Estimated Budget *</label>
-                        <select id="budget" name="budget" required>
-                            <option value="">Select your budget range...</option>
-                            <option value="under500">Under $500</option>
-                            <option value="500-1000">$500 - $1,000</option>
-                            <option value="1000-2000">$1,000 - $2,000</option>
-                            <option value="over2000">Over $2,000</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="timeline">Desired Timeline *</label>
-                        <select id="timeline" name="timeline" required>
-                            <option value="">When do you need this completed?</option>
-                            <option value="urgent">ASAP (1-2 weeks)</option>
-                            <option value="soon">Soon (2-4 weeks)</option>
-                            <option value="flexible">Flexible (1-2 months)</option>
-                            <option value="planning">Just Planning Ahead</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Tell Me About Your Project *</label>
-                        <textarea id="message" name="message" required placeholder="Describe what you're looking to build, any specific features you need, or questions you have..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Send My Request</button>
-                </form>
+        <!-- Interactive Demos Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Interactive Demos</h2>
+                <p class="section-subtitle">Just for fun - Python-inspired games and graphics</p>
             </div>
 
-            <div class="thank-you-message" id="thankYouMessage">
-                <h3>🎉 Thank You!</h3>
-                <p>Your request has been received! I'll review your project details and get back to you within 24 hours at the email address you provided.</p>
-                <p style="margin-top: 24px;">Looking forward to working with you and bringing your vision to life!</p>
-            </div>
-        </div>
+            <div class="interactive-grid">
+                <!-- Snake Game -->
+                <div class="interactive-card">
+                    <h3>🐍 Snake Game</h3>
+                    <p>A classic Snake game inspired by Python. Use arrow keys to control the snake and eat the food!</p>
+                    <div class="demo-area">
+                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                        <div class="game-info">
+                            Score: <span id="score">0</span> | High Score: <span id="highScore">0</span>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn" onclick="startGame()">Start Game</button>
+                            <button class="control-btn" onclick="pauseGame()">Pause</button>
+                            <button class="control-btn" onclick="resetGame()">Reset</button>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Payment Info at Bottom -->
-        <div class="payment-info">
-            <h3>💳 Payment Terms & Methods</h3>
-            <p><strong>Payment Structure:</strong> 50% deposit required to begin work, 50% due upon project completion before final files are delivered.</p>
-            <p><strong>Accepted Payment Methods:</strong></p>
-            <div class="payment-methods">
-                <span class="payment-badge">Venmo</span>
-                <span class="payment-badge">Cash App</span>
-                <span class="payment-badge">PayPal</span>
-                <span class="payment-badge">Stripe</span>
+                <!-- Turtle Graphics -->
+                <div class="interactive-card">
+                    <h3>🎨 Turtle Graphics</h3>
+                    <p>Beautiful geometric patterns inspired by Python's Turtle Graphics. Watch the code execute and see the pattern unfold in real-time!</p>
+		    <p>Want to learn more? It's easy! Follow me on YouTube</p>
+                    <div class="demo-area">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; min-height: 350px;" class="turtle-grid">
+                            <div style="background: rgba(0, 0, 0, 0.6); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Code View</div>
+                                <pre id="codeDisplay" style="font-family: 'Courier New', monospace; font-size: 11px; color: #10b981; line-height: 1.6; margin: 0; overflow-x: auto; white-space: pre-wrap; max-height: 280px; overflow-y: auto;">// Click a pattern button to see the code</pre>
+                            </div>
+                            <div style="background: rgba(0, 0, 0, 0.6); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Pattern View</div>
+                                <canvas id="turtleCanvas" width="280" height="280" style="border-radius: 8px; background: #000; display: block;"></canvas>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn" onclick="playSpiral()">▶ Spiral</button>
+                            <button class="control-btn" onclick="playFlower()">▶ Flower</button>
+                            <button class="control-btn" onclick="playStar()">▶ Star</button>
+                            <button class="control-btn" onclick="clearTurtle()">Clear</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <footer>
-            <p>All services delivered 100% online • Let's build something extraordinary together</p>
+            <p>Built with passion and code • Jennifer Pagel © 2024</p>
         </footer>
     </div>
 
     <script>
-        // Mouse spotlight effect
-        document.addEventListener('mousemove', (e) => {
-            const spotlight = document.querySelector('.spotlight');
-            spotlight.style.setProperty('--x', e.clientX + 'px');
-            spotlight.style.setProperty('--y', e.clientY + 'px');
-        });
+        // Snake Game Logic
+        let canvas = document.getElementById('snakeCanvas');
+        let ctx = canvas.getContext('2d');
+        let gridSize = 20;
+        let snake = [{x: 10, y: 10}];
+        let direction = {x: 0, y: 0};
+        let food = {x: 15, y: 15};
+        let score = 0;
+        let highScore = 0;
+        let gameInterval = null;
+        let isPaused = false;
 
-        function smoothScroll(event, targetId) {
-            event.preventDefault();
-            const element = document.getElementById(targetId);
-            const navHeight = 100;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+        document.addEventListener('keydown', changeDirection);
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-
-        function toggleServicesDropdown() {
-            const dropdown = document.getElementById('servicesDropdown');
-            dropdown.classList.toggle('show');
-        }
-
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('show');
-        }
-
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.classList.toggle('show');
-        }
-
-        // Close menus when clicking outside
-        window.onclick = function(event) {
-            if (!event.target.matches('.contact-btn') && 
-                !event.target.matches('.mobile-menu-btn') && 
-                !event.target.matches('.nav-link')) {
-                const dropdown = document.getElementById('dropdownMenu');
-                const mobileMenu = document.getElementById('mobileMenu');
-                const servicesDropdown = document.getElementById('servicesDropdown');
-                
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                }
-                if (mobileMenu.classList.contains('show')) {
-                    mobileMenu.classList.remove('show');
-                }
-                if (servicesDropdown.classList.contains('show')) {
-                    servicesDropdown.classList.remove('show');
-                }
+        function changeDirection(e) {
+            const keyMap = {
+                'ArrowUp': {x: 0, y: -1},
+                'ArrowDown': {x: 0, y: 1},
+                'ArrowLeft': {x: -1, y: 0},
+                'ArrowRight': {x: 1, y: 0}
+            };
+            
+            const newDir = keyMap[e.key];
+            if (newDir && (direction.x + newDir.x !== 0 || direction.y + newDir.y !== 0)) {
+                direction = newDir;
             }
         }
 
-        function scrollToContact() {
-            document.getElementById('contactForm').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+        function startGame() {
+            if (!gameInterval) {
+                direction = {x: 1, y: 0};
+                gameInterval = setInterval(updateGame, 150);
+            }
+            isPaused = false;
         }
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Hide form and show thank you message
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('thankYouMessage').style.display = 'block';
-            
-            // Scroll to thank you message
-            document.getElementById('thankYouMessage').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
+        function pauseGame() {
+            isPaused = !isPaused;
         }
+
+        function resetGame() {
+            clearInterval(gameInterval);
+            gameInterval = null;
+            snake = [{x: 10, y: 10}];
+            direction = {x: 0, y: 0};
+            score = 0;
+            document.getElementById('score').textContent = score;
+            drawGame();
+        }
+
+        function updateGame() {
+            if (isPaused) return;
+
+            const head = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+
+            if (head.x < 0 || head.x >= 20 || head.y < 0 || head.y >= 20 || 
+                snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                resetGame();
+                return;
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById('score').textContent = score;
+                if (score > highScore) {
+                    highScore = score;
+                    document.getElementById('highScore').textContent = highScore;
+                }
+                food = {
+                    x: Math.floor(Math.random() * 20),
+                    y: Math.floor(Math.random() * 20)
+                };
+            } else {
+                snake.pop();
+            }
+
+            drawGame();
+        }
+
+        function drawGame() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#10b981';
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+            });
+
+            ctx.fillStyle = '#ec4899';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+        }
+
+        drawGame();
+
+        // Turtle Graphics Logic
+        let turtleCanvas = document.getElementById('turtleCanvas');
+        let turtleCtx = turtleCanvas.getContext('2d');
+        let isAnimating = false;
+
+        class Turtle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = turtleCanvas.width / 2;
+                this.y = turtleCanvas.height / 2;
+                this.angle = 0;
+            }
+
+            forward(distance) {
+                const newX = this.x + distance * Math.cos(this.angle * Math.PI / 180);
+                const newY = this.y + distance * Math.sin(this.angle * Math.PI / 180);
+                
+                turtleCtx.beginPath();
+                turtleCtx.moveTo(this.x, this.y);
+                turtleCtx.lineTo(newX, newY);
+                turtleCtx.stroke();
+                
+                this.x = newX;
+                this.y = newY;
+            }
+
+            right(angle) {
+                this.angle += angle;
+            }
+        }
+
+        function updateCodeDisplay(code, patternName) {
+            const codeDisplay = document.getElementById('codeDisplay');
+            codeDisplay.textContent = `// ${patternName} Pattern\n\n${code}`;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function playSpiral() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.setColor('#ec4899');
+turtle.penWidth = 2;
+
+for (let i = 0; i < 80; i++) {
+  turtle.forward(i * 1.2);
+  turtle.right(45);
+}`;
+            
+            updateCodeDisplay(code, 'Spiral');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.strokeStyle = '#ec4899';
+            turtleCtx.lineWidth = 2;
+
+            for (let i = 0; i < 80; i++) {
+                turtle.forward(i * 1.2);
+                turtle.right(45);
+                await sleep(25);
+            }
+            
+            isAnimating = false;
+        }
+
+        async function playFlower() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.penWidth = 2;
+
+for (let i = 0; i < 36; i++) {
+  turtle.setColor(\`hsl(\${i * 10}, 70%, 60%)\`);
+  
+  // Draw a square petal
+  for (let j = 0; j < 4; j++) {
+    turtle.forward(60);
+    turtle.right(90);
+  }
+  turtle.right(10);
+}`;
+            
+            updateCodeDisplay(code, 'Flower');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.lineWidth = 2;
+
+            for (let i = 0; i < 36; i++) {
+                turtleCtx.strokeStyle = `hsl(${i * 10}, 70%, 60%)`;
+                
+                for (let j = 0; j < 4; j++) {
+                    turtle.forward(60);
+                    turtle.right(90);
+                    await sleep(10);
+                }
+                turtle.right(10);
+            }
+            
+            isAnimating = false;
+        }
+
+        async function playStar() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            const code = `const turtle = new Turtle();
+turtle.setColor('#f472b6');
+turtle.penWidth = 3;
+
+// Draw a 5-pointed star
+for (let i = 0; i < 5; i++) {
+  turtle.forward(100);
+  turtle.right(144);
+}`;
+            
+            updateCodeDisplay(code, 'Star');
+            clearTurtle();
+            
+            const turtle = new Turtle();
+            turtleCtx.strokeStyle = '#f472b6';
+            turtleCtx.lineWidth = 3;
+
+            for (let i = 0; i < 5; i++) {
+                turtle.forward(100);
+                turtle.right(144);
+                await sleep(300);
+            }
+            
+            isAnimating = false;
+        }
+
+        function clearTurtle() {
+            turtleCtx.fillStyle = '#000';
+            turtleCtx.fillRect(0, 0, turtleCanvas.width, turtleCanvas.height);
+            if (!isAnimating) {
+                document.getElementById('codeDisplay').textContent = '// Click a pattern button to see the code';
+            }
+        }
+
+        // Initialize
+        clearTurtle();
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
