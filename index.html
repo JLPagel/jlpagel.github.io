@@ -1486,38 +1486,6 @@
             </div>
         </div>
 
-		<script>
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const data = new FormData(form);
-    
-    console.log("Form submitted!");
-    console.log("Form data:", Object.fromEntries(data));
-    
-    fetch("https://script.google.com/macros/s/AKfycbyUdbDSKJkmERB9aHrVCMXGUU1TGkaWkiFjzetbilgExTHsRzJTKeZEaD_hGrhjkqE1pQ/exec", {
-        method: "POST",
-        body: data
-    })
-    .then(response => {
-        console.log("Response received:", response.status);
-        return response.text();
-    })
-    .then(text => {
-        console.log("Response text:", text);
-        if (text.includes("Success")) {
-            document.getElementById("formContainer").style.display = "none";
-            document.getElementById("thankYouMessage").style.display = "block";
-        } else {
-            alert("Something went wrong. Please try again.");
-        }
-    })
-    .catch(error => {
-        console.error("Error!", error);
-        alert("Submission failed: " + error.message);
-    });
-}
-		</script>
         <!-- Payment Info at Bottom -->
         <div class="payment-info">
             <h3>💳 Payment Terms & Methods</h3>
@@ -1600,23 +1568,41 @@
             });
         }
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Hide form and show thank you message
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('thankYouMessage').style.display = 'block';
-            
-            // Scroll to thank you message
-            document.getElementById('thankYouMessage').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-        }
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const data = new FormData(form);
+  
+  console.log("Form submitted!");
+  console.log("Form data:", Object.fromEntries(data));
+  
+  fetch("https://script.google.com/macros/s/AKfycbyUdbDSKJkmERB9aHrVCMXGUU1TGkaWkiFjzetbilgExTHsRzJTKeZEaD_hGrhjkqE1pQ/exec", {
+    method: "POST",
+    body: data
+  })
+  .then(response => {
+    console.log("Response received:", response.status);
+    return response.text();
+  })
+  .then(text => {
+    console.log("Response text:", text);
+    if (text.includes("Success")) {
+      document.getElementById("formContainer").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  })
+  .catch(error => {
+    console.error("Error!", error);
+    alert("Submission failed: " + error.message);
+  });
+}
     </script>
 </body>
 
 </html>
+
 
 
 
