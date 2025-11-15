@@ -1486,6 +1486,32 @@
             </div>
         </div>
 
+		<script>
+  			function handleSubmit(event) {
+    			event.preventDefault(); // Prevent default form submission
+
+    			const form = event.target;
+    			const data = new FormData(form);
+
+    			fetch("https://script.google.com/macros/s/AKfycbzkeYe3LKgg-BpdT94BCzTzY0Tm6xEX2DwYfID5Kemy0kjEYre1sPfUWffOrMBXujy08g/exec", {
+     		   		method: "POST",
+      				body: data
+    			})
+    			.then(response => {
+      				if (response.ok) {
+       					document.getElementById("formContainer").style.display = "none";
+        				document.getElementById("thankYouMessage").style.display = "block";
+      				} else {
+        				alert("Something went wrong. Please try again.");
+      				}
+    			})
+    			.catch(error => {
+      				console.error("Error!", error.message);
+      				alert("Submission failed. Please try again.");
+    			});
+  			}
+		</script>
+
         <!-- Payment Info at Bottom -->
         <div class="payment-info">
             <h3>💳 Payment Terms & Methods</h3>
@@ -1585,6 +1611,7 @@
 </body>
 
 </html>
+
 
 
 
