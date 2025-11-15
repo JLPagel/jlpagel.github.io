@@ -1078,87 +1078,79 @@
             letter-spacing: 0.5px;
         }
 
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 80px;
-                letter-spacing: -4px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                top: 20px;
-                padding: 14px 24px;
-            }
-
-            .nav-container {
-                gap: 30px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .container {
-                padding: 120px 24px 40px;
-            }
-
-            h1 {
-                font-size: 56px;
-                letter-spacing: -3px;
-            }
-
-            .subtitle {
-                font-size: 20px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card {
-                padding: 40px 32px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-section {
-                padding: 50px 32px;
-            }
-
-            .contact-section h2 {
-                font-size: 42px;
-            }
-
-            .dropdown-content {
-                right: -20px;
-                min-width: 300px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .profile-photo {
-                margin: 0 auto;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+@media (max-width: 768px) {
+    nav {
+        top: 20px;
+        padding: 14px 24px;
+    }
+    .nav-container {
+        gap: 30px;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .container {
+        padding: 120px 24px 40px;
+    }
+    h1 {
+        font-size: 56px;
+        letter-spacing: -3px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-card {
+        padding: 40px 32px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .contact-section {
+        padding: 50px 32px;
+    }
+    .contact-section h2 {
+        font-size: 42px;
+    }
+    .dropdown-content {
+        right: -20px;
+        min-width: 300px;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .profile-photo {
+        margin: 0 auto;
+    }
+    
+    /* Fix pricing display on mobile */
+    .pricing {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 24px 16px;
+    }
+    
+    .sale-price {
+        font-size: 32px;
+        padding: 12px 24px;
+        letter-spacing: -1px;
+    }
+    
+    .original-price {
+        font-size: 20px;
+    }
+    
+    .arrow {
+        font-size: 24px;
+    }
+}
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y70LB7TT1"></script>
@@ -1603,6 +1595,7 @@ function handleSubmit(event) {
 </body>
 
 </html>
+
 
 
 
