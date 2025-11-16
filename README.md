@@ -1,47 +1,49 @@
-# JLP Development MAIN PAGE
+# JLP Development — MAIN PAGE
 
-Welcome to the official portfolio of Jennifer Pagel — a purpose-driven junior full stack developer, business coach, and digital solutions provider. This site showcases her hands-on approach to building impactful web experiences for small businesses and startups.
+Welcome to the main website of Jennifer Pagel — a full stack developer, business coach, and digital solutions provider dedicated to helping small businesses and startups thrive online. This site serves as the central hub for her services, portfolio, and client onboarding.
 
-## 🔍 Overview
+## 🌟 Purpose
 
-This multi-page website is designed to:
-- Introduce Jennifer’s background, values, and technical expertise
-- Present her service offerings with transparent pricing
-- Invite collaboration through a contact form and embedded media
-- Build trust with integrated reviews and analytics
+This site was built to:
+- Present Jennifer’s service offerings with clarity and warmth
+- Guide potential clients through her process, pricing, and value
+- Build trust through storytelling, testimonials, and transparent communication
+- Provide a seamless contact and onboarding experience
 
 ## 🛠 Tech Stack
 
-- **HTML, CSS, JavaScript** — for responsive layout and styling
+- **HTML, CSS, JavaScript** — for responsive, accessible layout and styling
 - **GitHub Pages** — for hosting and deployment
-- **Google Tag Manager & GA4** — for advanced analytics
-- **Trustpilot Widget** — for credibility and social proof
-- **Zoho CRM Integration (planned)** — for lead capture and onboarding
+- **Google Tag Manager & GA4** — for advanced analytics and conversion tracking
+- **Trustpilot Integration** — for social proof and credibility
+- **Zoho CRM (via Zoho Flow)** — for lead capture and automation
+- **Google Sheets & Apps Script** — for backend data handling and form processing
 
 ## 📌 Features
 
-- Custom storytelling layout (About → Investment → Pricing)
-- Embedded GitHub and YouTube links
-- Contact form with backend integration
+- Multi-section layout: About, Services, Investment, Pricing, Contact
+- Embedded GitHub and YouTube links for portfolio and tutorials
 - Trustpilot badge and review widget
-- Mobile-friendly design with playful UI touches
+- Custom contact form with backend automation
+- Mobile-first responsive design
+- Playful UI elements (emojis, color accents) for a warm, engaging experience
 
 ## 🚀 Deployment
 
-This site is live at:  
+Live at:  
 [https://jlpagel.github.io/JLP.DEV-Website-2-/](https://jlpagel.github.io/JLP.DEV-Website-2-/)
 
 To deploy updates:
 1. Clone the repo
-2. Edit HTML/CSS/JS files as needed
+2. Edit content in HTML/CSS/JS files
 3. Push changes to `main` branch
-4. GitHub Pages will auto-update
+4. GitHub Pages will auto-deploy
 
-## 🤝 Contact
+## 💬 Contact
 
-For collaborations, coaching, or custom web builds:  
+For custom websites, coaching, or collaboration:  
 📧 jlpagel4@gmail.com  
 🔗 [LinkedIn](https://www.linkedin.com/in/jenniferpagel)  
-📹 [YouTube Channel](https://www.youtube.com/@jlpdevelopment)
+📹 [YouTube](https://www.youtube.com/@jlpdevelopment)
 
 ---
