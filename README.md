@@ -41,9 +41,5 @@ To deploy updates:
 
 ## 💬 Contact
 
-For custom websites, coaching, or collaboration:  
-📧 jlpagel4@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/jenniferpagel)  
-📹 [YouTube](https://www.youtube.com/@jlpdevelopment)
 
 ---
