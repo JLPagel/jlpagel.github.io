@@ -1510,6 +1510,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		/* Collapsible Service Cards */
 .service-card {
     cursor: pointer;
+    padding: 20px 30px !important; /* Smaller padding when collapsed */
+    min-height: auto !important;
+}
+
+.service-card.expanded {
+    padding: 40px !important; /* Normal padding when expanded */
 }
 
 .service-card .service-description,
@@ -1521,6 +1527,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     overflow: hidden;
     opacity: 0;
     transition: all 0.4s ease;
+    margin: 0 !important;
 }
 
 .service-card.expanded .service-description,
@@ -1530,15 +1537,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .service-card.expanded > div[style*="margin-top: 16px"] {
     max-height: 2000px;
     opacity: 1;
+    margin: initial !important;
+}
+
+.service-title {
+    margin-bottom: 0 !important; /* Remove gap when collapsed */
+}
+
+.service-card.expanded .service-title {
+    margin-bottom: 16px !important; /* Add gap back when expanded */
 }
 
 .expand-indicator {
     text-align: center;
-    padding: 15px 0;
+    padding: 10px 0 5px 0;
     color: rgba(255, 255, 255, 0.7);
     font-weight: 600;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 13px;
+    margin-top: 5px;
 }
 
 .service-card.expanded .expand-indicator::after {
@@ -2168,6 +2184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
