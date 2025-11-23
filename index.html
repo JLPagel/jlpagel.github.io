@@ -2235,6 +2235,180 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             });
         }
 
+		<script>
+    // Mouse spotlight effect
+    document.addEventListener('mousemove', (e) => {
+        const spotlight = document.querySelector('.spotlight');
+        spotlight.style.setProperty('--x', e.clientX + 'px');
+        spotlight.style.setProperty('--y', e.clientY + 'px');
+    });
+
+    // ... all your other functions (smoothScroll, toggleDropdown, etc.) ...
+
+    // Fireworks animation - ADD THIS BEFORE handleSubmit
+    function startFireworks() {
+      const canvas = document.getElementById('fireworksCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.classList.add('active');
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const colors = [
+        '#5BCEFA', '#F5A623', '#76D7C4', '#7ED6DF', '#A29BFE', '#FF7675', 
+        '#FDCB6E', '#81ECEC', '#E74C3C', '#3498DB', '#9B59B6', '#1ABC9C', 
+        '#F39C12', '#E91E63'
+      ];
+      
+      class Particle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          this.velocity = {
+            x: (Math.random() - 0.5) * 12,
+            y: (Math.random() - 0.5) * 12
+          };
+          this.alpha = 1;
+          this.decay = Math.random() * 0.02 + 0.015;
+          this.size = Math.random() * 4 + 3;
+        }
+        
+        update() {
+          this.velocity.y += 0.15;
+          this.x += this.velocity.x;
+          this.y += this.velocity.y;
+          this.alpha -= this.decay;
+        }
+        
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = this.color;
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      
+      let particles = [];
+      let fireworkCount = 0;
+      const maxFireworks = 20;
+      
+      function createFirework() {
+        if (fireworkCount >= maxFireworks) return;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height * 0.6 + canvas.height * 0.1;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        for (let i = 0; i < 80; i++) {
+          particles.push(new Particle(x, y, color));
+        }
+        fireworkCount++;
+      }
+      
+      function animate() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter(particle => {
+          particle.update();
+          particle.draw();
+          return particle.alpha > 0;
+        });
+        if (fireworkCount < maxFireworks || particles.length > 0) {
+          requestAnimationFrame(animate);
+        } else {
+          canvas.classList.remove('active');
+        }
+      }
+      
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createFirework(), i * 50);
+      }
+      animate();
+      
+      let launchCount = 5;
+      const interval = setInterval(() => {
+        createFirework();
+        setTimeout(() => createFirework(), 30);
+        launchCount += 2;
+        if (launchCount >= maxFireworks) {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+
+    // Sound function
+    function playSuccessSound(audioContext) {
+      const playNote = (frequency, startTime, duration) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        oscillator.frequency.value = frequency;
+        oscillator.type = 'sine';
+        gainNode.gain.setValueAtTime(0.3, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+        oscillator.start(startTime);
+        oscillator.stop(startTime + duration);
+      };
+      const now = audioContext.currentTime;
+      playNote(523.25, now, 0.3);
+      playNote(659.25, now + 0.1, 0.3);
+      playNote(783.99, now + 0.2, 0.4);
+      playNote(1046.50, now + 0.3, 0.5);
+    }
+
+    // Celebration trigger
+    function triggerCelebration(audioContext) {
+      const overlay = document.getElementById('celebrationOverlay');
+      overlay.classList.add('active');
+      playSuccessSound(audioContext);
+      startFireworks();
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        document.getElementById("formContainer").style.display = "none";
+        document.getElementById("thankYouMessage").style.display = "block";
+        document.getElementById("thankYouMessage").scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 3000);
+    }
+
+    // Form submit handler
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const data = new FormData(form);
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      audioContext.resume();
+      
+      fetch("https://script.google.com/macros/s/AKfycbyUdbDSKJkmERB9aHrVCMXGUU1TGkaWkiFjzetbilgExTHsRzJTKeZEaD_hGrhjkqE1pQ/exec", {
+        method: "POST",
+        body: data
+      })
+      .then(response => response.text())
+      .then(text => {
+        if (text.includes("Success")) {
+          triggerCelebration(audioContext);
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Error!", error);
+        alert("Submission failed: " + error.message);
+      });
+    }
+
+    // ... rest of your existing functions ...
+
+</script>
+
 function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
@@ -2461,6 +2635,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
