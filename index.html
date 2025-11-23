@@ -1506,6 +1506,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: rgba(102, 126, 234, 0.3);
     transform: translateX(5px);
 }
+
+		/* Collapsible Service Cards */
+.service-card {
+    cursor: pointer;
+}
+
+.service-card .service-description,
+.service-card .features,
+.service-card .pricing,
+.service-card .cta-button,
+.service-card > div[style*="margin-top: 16px"] {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.service-card.expanded .service-description,
+.service-card.expanded .features,
+.service-card.expanded .pricing,
+.service-card.expanded .cta-button,
+.service-card.expanded > div[style*="margin-top: 16px"] {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.expand-indicator {
+    text-align: center;
+    padding: 15px 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.service-card.expanded .expand-indicator::after {
+    content: "▲ Click to collapse";
+}
+
+.service-card:not(.expanded) .expand-indicator::after {
+    content: "▼ Click for details";
+}
 		
     </style>
     <!-- Google tag (gtag.js) -->
@@ -1670,7 +1712,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <div class="services-grid" id="services">
             <!-- Service 1 -->
-            <div class="service-card" id="service-1">
+            <div class="service-card" id="service-1" onclick="toggleCard(this)">
                 <div class="discount-badge">70% OFF</div>
                 <h2 class="service-title">Landing Page</h2>
                 <p class="service-description">A professional single-page website perfect for portfolios, personal brands, or simple business presence.</p>
@@ -1690,10 +1732,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
                     <p style="color: rgba(255, 255, 255, 0.5); font-size: 13px; text-align: center;">💳 Accepts: Venmo, CashApp, PayPal, Stripe</p>
                 </div>
+                <div class="expand-indicator"></div>
             </div>
 
             <!-- Service 2 -->
-            <div class="service-card" id="service-2">
+            <div class="service-card" id="service-2" onclick="toggleCard(this)">
                 <div class="discount-badge">65% OFF</div>
                 <h2 class="service-title">Multi-Page Website</h2>
                 <p class="service-description">A complete website with up to 5 pages, ideal for small businesses and growing brands.</p>
@@ -1711,10 +1754,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="sale-price">$400</span>
                 </div>
                 <button class="cta-button" onclick="scrollToContact()">Book a Free Consultation</button>
+                <div class="expand-indicator"></div>
             </div>
 
             <!-- Service 3 -->
-            <div class="service-card" id="service-3">
+            <div class="service-card" id="service-3" onclick="toggleCard(this)">
                 <div class="discount-badge">60% OFF</div>
                 <h2 class="service-title">Web Application</h2>
                 <p class="service-description">Interactive web app with user authentication, database, and custom functionality.</p>
@@ -1732,10 +1776,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="sale-price">$800</span>
                 </div>
                 <button class="cta-button" onclick="scrollToContact()">Book a Free Consultation</button>
+                <div class="expand-indicator"></div>
             </div>
 
             <!-- Service 4 -->
-            <div class="service-card" id="service-4">
+            <div class="service-card" id="service-4" onclick="toggleCard(this)">
                 <div class="discount-badge">75% OFF</div>
                 <h2 class="service-title">Website Fixes & Updates</h2>
                 <p class="service-description">Need help fixing bugs, updating content, or improving an existing website? I can help!</p>
@@ -1752,10 +1797,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="sale-price">$20/hr</span>
                 </div>
                 <button class="cta-button" onclick="scrollToContact()">Book a Free Consultation</button>
+                <div class="expand-indicator"></div>
             </div>
 
             <!-- Service 5 -->
-            <div class="service-card" id="service-5">
+            <div class="service-card" id="service-5" onclick="toggleCard(this)">
                 <div class="discount-badge">70% OFF</div>
                 <h2 class="service-title">E-Commerce Store</h2>
                 <p class="service-description">A simple online store to start selling your products or services online.</p>
@@ -1773,10 +1819,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="sale-price">$550</span>
                 </div>
                 <button class="cta-button" onclick="scrollToContact()">Book a Free Consultation</button>
+                <div class="expand-indicator"></div>
             </div>
 
             <!-- Service 6 -->
-            <div class="service-card" id="service-6">
+            <div class="service-card" id="service-6" onclick="toggleCard(this)">
                 <div class="discount-badge">80% OFF</div>
                 <h2 class="service-title">Website Consultation</h2>
                 <p class="service-description">Not sure what you need? Let's chat about your project and I'll help you figure out the best solution.</p>
@@ -1793,9 +1840,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="sale-price">$20</span>
                 </div>
                 <button class="cta-button" onclick="scrollToContact()">Get Started</button>
+                <div class="expand-indicator"></div>
             </div>
         </div>
-
         <!-- Contact Form Section -->
         <div class="contact-section" id="contactForm">
             <div id="formContainer">
@@ -2008,6 +2055,29 @@ function handleSubmit(event) {
                 closeModal();
             }
         });
+// Collasible service cards
+function toggleCard(card) {
+    // Close all other cards
+    document.querySelectorAll('.service-card').forEach(c => {
+        if (c !== card) {
+            c.classList.remove('expanded');
+        }
+    });
+    
+    // Toggle the clicked card
+    card.classList.toggle('expanded');
+    
+    // Prevent the button click from bubbling up
+    event.stopPropagation();
+}
+
+// Prevent button clicks from toggling the card
+document.querySelectorAll('.cta-button').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
 
 		
     </script>
@@ -2098,6 +2168,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
