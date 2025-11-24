@@ -1798,10 +1798,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gtag('js', new Date());
       gtag('config', 'G-9Y70LB7TT1');
     </script>
+
+	<!-- Bubble message Animation -->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
 	<!-- ================= HTML BODY SECTION ================= -->
 <body>
+	<div id="animated-guide-root"></div>
     <div class="ultra-bg">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -2640,6 +2646,274 @@ document.querySelectorAll('.cta-button').forEach(btn => {
 		<!-- Fireworks Canvas -->
 <div class="celebration-overlay" id="celebrationOverlay"></div>
 <canvas class="fireworks-canvas" id="fireworksCanvas"></canvas>
+
+		<script type="text/babel">
+  const { useState, useEffect } = React;
+
+  const AnimatedGuide = () => {
+    // UPDATE THIS URL TO YOUR IMAGE PATH
+    const imageUrl = "https://jlpagel.github.io/SpeechBubblePhoto.png";
+    
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [step, setStep] = useState(0);
+    const [position, setPosition] = useState({ x: 5, y: 5 });
+    const [showFireworks, setShowFireworks] = useState(false);
+
+    const dialogue = [
+      "Hi there! Welcome to my page. Feel free to look around",
+      "Get to know a little bit more about me and when you're ready...",
+      "Book an hour session with me for free!",
+      "Book here or scroll all the way to the top (Let's talk button)",
+      "and book my calendar directly"
+    ];
+
+    const animationSteps = [
+      { x: 50, y: 15, duration: 3000, scroll: 0 }, // Hero section
+      { x: 50, y: 40, duration: 2500, scroll: 800 }, // About section
+      { x: 50, y: 65, duration: 2500, scroll: 1600 }, // Free consultation
+      { x: 50, y: 80, duration: 2500, scroll: 2400 }, // Contact form
+      { x: 50, y: 5, duration: 2000, scroll: 0 }, // Fly to top
+    ];
+
+    useEffect(() => {
+      if (!isAnimating) return;
+
+      if (step < animationSteps.length) {
+        const currentStep = animationSteps[step];
+        setPosition({ x: currentStep.x, y: currentStep.y });
+        
+        // Smooth scroll to section
+        window.scrollTo({
+          top: currentStep.scroll,
+          behavior: 'smooth'
+        });
+
+        const timer = setTimeout(() => {
+          setStep(step + 1);
+        }, currentStep.duration);
+
+        return () => clearTimeout(timer);
+      } else if (step === animationSteps.length) {
+        // Walk off screen
+        setPosition({ x: 110, y: 5 });
+        setTimeout(() => {
+          setShowFireworks(true);
+          setTimeout(() => {
+            setShowFireworks(false);
+            setIsAnimating(false);
+            setStep(0);
+            setPosition({ x: 5, y: 5 });
+          }, 2000);
+        }, 1500);
+      }
+    }, [isAnimating, step]);
+
+    const startAnimation = () => {
+      if (!isAnimating) {
+        setIsAnimating(true);
+        setStep(0);
+      }
+    };
+
+    const Firework = ({ delay, x, y }) => {
+      const colors = ['#ff0080', '#00ff80', '#0080ff', '#ff8000', '#ff0000', '#ffff00', '#ff00ff', '#00ffff'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      return React.createElement('div', {
+        className: 'firework-container',
+        style: {
+          position: 'absolute',
+          left: `${x}%`,
+          top: `${y}%`,
+          transform: 'translate(-50%, -50%)',
+          zIndex: 10000,
+          width: '4px',
+          height: '4px'
+        }
+      },
+        [...Array(20)].map((_, i) => {
+          const angle = (i * 360) / 20;
+          const distance = 80 + Math.random() * 40;
+          return React.createElement('div', {
+            key: i,
+            style: {
+              position: 'absolute',
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              background: color,
+              boxShadow: `0 0 10px ${color}`,
+              left: '50%',
+              top: '50%',
+              animation: `explode 1.2s ease-out ${delay}s forwards`,
+              '--angle': `${angle}deg`,
+              '--distance': `${distance}px`
+            }
+          });
+        })
+      );
+    };
+
+    return React.createElement('div', {
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 9999
+      }
+    },
+      // Style tag
+      React.createElement('style', {
+        dangerouslySetInnerHTML: {
+          __html: `
+            @keyframes explode {
+              0% {
+                transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0);
+                opacity: 1;
+              }
+              100% {
+                transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--distance));
+                opacity: 0;
+              }
+            }
+            @keyframes float {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-10px); }
+            }
+          `
+        }
+      }),
+      
+      // Animated Guide Character
+      React.createElement('div', {
+        style: {
+          position: 'absolute',
+          left: `${position.x}%`,
+          top: `${position.y}%`,
+          transform: 'translate(-50%, -50%)',
+          transition: 'all 2s ease-in-out',
+          cursor: 'pointer',
+          pointerEvents: 'auto',
+          zIndex: 10000
+        },
+        onClick: startAnimation
+      },
+        React.createElement('div', {
+          style: {
+            position: 'relative',
+            animation: isAnimating ? 'none' : 'float 3s ease-in-out infinite'
+          }
+        },
+          // Speech Bubble
+          isAnimating && step < dialogue.length && React.createElement('div', {
+            style: {
+              position: 'absolute',
+              bottom: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              marginBottom: '20px',
+              width: '250px',
+              zIndex: 10001
+            }
+          },
+            React.createElement('div', {
+              style: {
+                background: 'white',
+                borderRadius: '30px',
+                padding: '20px 24px',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                border: '4px solid black',
+                position: 'relative'
+              }
+            },
+              React.createElement('p', {
+                style: {
+                  margin: 0,
+                  textAlign: 'center',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#333',
+                  lineHeight: '1.4'
+                }
+              }, dialogue[step]),
+              React.createElement('div', {
+                style: {
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '50%',
+                  transform: 'translate(-50%, 50%) rotate(45deg)',
+                  width: '24px',
+                  height: '24px',
+                  background: 'white',
+                  borderRight: '4px solid black',
+                  borderBottom: '4px solid black'
+                }
+              })
+            )
+          ),
+          
+          // Image
+          imageUrl && imageUrl !== "YOUR_IMAGE_URL_HERE" ? 
+            React.createElement('img', {
+              src: imageUrl,
+              alt: 'Jennifer - Your Guide',
+              style: {
+                width: '150px',
+                height: 'auto',
+                display: 'block',
+                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))',
+                transition: 'transform 0.3s'
+              },
+              onMouseEnter: (e) => e.target.style.transform = 'scale(1.05)',
+              onMouseLeave: (e) => e.target.style.transform = 'scale(1)'
+            }) :
+            React.createElement('div', {
+              style: {
+                width: '150px',
+                height: '200px',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                borderRadius: '10px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                textAlign: 'center',
+                padding: '20px',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }
+            }, 'Add your image URL')
+        )
+      ),
+      
+      // Fireworks
+      showFireworks && React.createElement('div', {
+        style: {
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 10000
+        }
+      },
+        React.createElement(Firework, { delay: 0, x: 30, y: 30 }),
+        React.createElement(Firework, { delay: 0.15, x: 70, y: 25 }),
+        React.createElement(Firework, { delay: 0.3, x: 50, y: 40 }),
+        React.createElement(Firework, { delay: 0.45, x: 20, y: 50 }),
+        React.createElement(Firework, { delay: 0.6, x: 80, y: 45 }),
+        React.createElement(Firework, { delay: 0.75, x: 40, y: 60 }),
+        React.createElement(Firework, { delay: 0.9, x: 60, y: 55 }),
+        React.createElement(Firework, { delay: 1.05, x: 50, y: 30 })
+      )
+    );
+  };
+
+  // Render the component
+  const root = ReactDOM.createRoot(document.getElementById('animated-guide-root'));
+  root.render(React.createElement(AnimatedGuide));
+</script>
 		
 </body>
 	<!-- Google Tag Manager (noscript) -->
@@ -2648,6 +2922,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
