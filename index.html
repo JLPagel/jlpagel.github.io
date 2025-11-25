@@ -2661,10 +2661,22 @@ document.querySelectorAll('.cta-button').forEach(btn => {
 <div class="celebration-overlay" id="celebrationOverlay"></div>
 <canvas class="fireworks-canvas" id="fireworksCanvas"></canvas>
 
-		<script type="text/babel">
+		<!-- ADD THIS TO YOUR index.html FILE -->
+
+<!-- Step 1: Add this BEFORE the closing </head> tag -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- Step 2: Add this DIV right after your opening <body> tag -->
+<div id="animated-guide-root"></div>
+
+<!-- Animated ME! -->
+<script type="text/babel">
   const { useState, useEffect } = React;
 
-const AnimatedGuide = () => {
+  const AnimatedGuide = () => {
+
     const imageUrl = "https://jlpagel.github.io/SpeechBubblePhoto.png";
     
     const [isAnimating, setIsAnimating] = useState(false);
@@ -2688,6 +2700,7 @@ const animationSteps = [
       { x: 50, y: 25, duration: 2500, scroll: 0 },
     ];
 
+
     useEffect(() => {
       if (!isAnimating) return;
 
@@ -2695,6 +2708,7 @@ const animationSteps = [
         const currentStep = animationSteps[step];
         setPosition({ x: currentStep.x, y: currentStep.y });
         
+        // Smooth scroll to section
         window.scrollTo({
           top: currentStep.scroll,
           behavior: 'smooth'
@@ -2706,6 +2720,7 @@ const animationSteps = [
 
         return () => clearTimeout(timer);
       } else if (step === animationSteps.length) {
+        // Walk off screen
         setPosition({ x: 110, y: 5 });
         setTimeout(() => {
           setShowFireworks(true);
@@ -2776,6 +2791,7 @@ const animationSteps = [
         zIndex: 9999
       }
     },
+      // Style tag
       React.createElement('style', {
         dangerouslySetInnerHTML: {
           __html: `
@@ -2797,6 +2813,7 @@ const animationSteps = [
         }
       }),
       
+      // Animated Guide Character
       React.createElement('div', {
         style: {
           position: 'absolute',
@@ -2816,6 +2833,7 @@ const animationSteps = [
             animation: isAnimating ? 'none' : 'float 3s ease-in-out infinite'
           }
         },
+          // Speech Bubble
           isAnimating && step < dialogue.length && React.createElement('div', {
             style: {
               position: 'absolute',
@@ -2823,7 +2841,7 @@ const animationSteps = [
               left: '50%',
               transform: 'translateX(-50%)',
               marginBottom: '20px',
-              width: isMobile ? '280px' : '400px',
+              width: '250px',
               zIndex: 10001
             }
           },
@@ -2841,7 +2859,7 @@ const animationSteps = [
                 style: {
                   margin: 0,
                   textAlign: 'center',
-                  fontSize: isMobile ? '14px' : '16px',
+                  fontSize: '16px',
                   fontWeight: '600',
                   color: '#333',
                   lineHeight: '1.4'
@@ -2863,12 +2881,13 @@ const animationSteps = [
             )
           ),
           
-          imageUrl ? 
+          // Image
+          imageUrl && imageUrl !== "YOUR_IMAGE_URL_HERE" ? 
             React.createElement('img', {
               src: imageUrl,
               alt: 'Jennifer - Your Guide',
               style: {
-                width: '400px',
+                width: '150px',
                 height: 'auto',
                 display: 'block',
                 filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))',
@@ -2896,6 +2915,7 @@ const animationSteps = [
         )
       ),
       
+      // Fireworks
       showFireworks && React.createElement('div', {
         style: {
           position: 'absolute',
@@ -2928,6 +2948,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
