@@ -2940,49 +2940,6 @@ const animationSteps = [
   // Render the component
   const root = ReactDOM.createRoot(document.getElementById('animated-guide-root'));
   root.render(React.createElement(AnimatedGuide));
-	</script>
-
-	<script>
-// Temporary mobile scroll debugger
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth <= 768) {
-        // Create a floating debug panel
-        const debug = document.createElement('div');
-        debug.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.9);
-            color: lime;
-            padding: 15px;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 14px;
-            z-index: 99999;
-            max-width: 200px;
-        `;
-        document.body.appendChild(debug);
-        
-        // Show scroll position
-        window.addEventListener('scroll', function() {
-            debug.innerHTML = `
-                Scroll: ${Math.round(window.scrollY)}px<br>
-                Width: ${window.innerWidth}px
-            `;
-        });
-        
-        // Log section positions
-        console.log('=== MOBILE SECTION POSITIONS ===');
-        console.log('About section:', document.getElementById('about')?.offsetTop);
-        console.log('Services:', document.getElementById('services')?.offsetTop);
-        console.log('Service 6:', document.getElementById('service-6')?.offsetTop);
-        console.log('Contact:', document.getElementById('contactForm')?.offsetTop);
-    }
-});
-
-		
-</script>
-				
 </script>
 		
 </body>
@@ -2992,9 +2949,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
-
-
-
 
 
 
