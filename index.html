@@ -2692,13 +2692,19 @@ document.querySelectorAll('.cta-button').forEach(btn => {
       "and book my calendar directly"
     ];
 
+// Calculate positions dynamically based on actual elements
+const getScrollPosition = (elementId, offset = -100) => {
+  const element = document.getElementById(elementId);
+  return element ? element.offsetTop + offset : 0;
+};
+
 const animationSteps = [
-      { x: 50, y: 25, duration: 4000, scroll: 0 },
-      { x: 50, y: 35, duration: 3700, scroll: 1200 },
-      { x: 50, y: 60, duration: 4200, scroll: 2800 },
-      { x: 50, y: 70, duration: 3500, scroll: 4500 },
-      { x: 50, y: 25, duration: 2500, scroll: 0 },
-    ];
+  { x: 50, y: 25, duration: 4000, scroll: 0 }, // Top
+  { x: 50, y: 35, duration: 3700, scroll: getScrollPosition('about', -150) }, // About section
+  { x: 50, y: 60, duration: 4200, scroll: getScrollPosition('services', -100) }, // Services
+  { x: 50, y: 70, duration: 3500, scroll: getScrollPosition('service-6', -100) }, // Service 6
+  { x: 50, y: 25, duration: 2500, scroll: 0 }, // Back to top
+];
 
 
     useEffect(() => {
@@ -2989,6 +2995,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
