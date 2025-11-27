@@ -854,6 +854,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+			cursor: pointer;
         }
 
         .service-card::before {
@@ -1684,12 +1685,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .expand-indicator {
     text-align: center;
-    padding: 15px 0 0 0;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 600;
-    font-size: 13px;
+    padding: 15px 0;
+    color: #a855f7;
+    font-weight: 700;
+    font-size: 15px;
     margin-top: 20px;
     position: relative;
+    animation: pulse-hint 2s ease-in-out infinite;
+}
+
+@keyframes pulse-hint {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+		/* Hover effect for collapsed cards (desktop only) */
+@media (hover: hover) {
+    .service-card:not(.expanded):hover {
+        border-color: rgba(168, 85, 247, 0.4);
+        transform: translateY(-4px);
+    }
+
+    .service-card:not(.expanded):hover .expand-indicator {
+        color: #ec4899;
+    }
 }
 
 .expand-indicator::before {
@@ -2958,6 +2977,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 </html>
+
 
 
 
